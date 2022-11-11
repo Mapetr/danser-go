@@ -18,6 +18,7 @@ func initKnockout() *knockout {
 		MaxCursorSize:       7.0,
 		AddDanser:           false,
 		DanserName:          "danser",
+		MissBeforeEnd:       0,
 	}
 }
 
@@ -61,9 +62,10 @@ type knockout struct {
 	//Maximum cursor size (when there is only 1 player left)
 	MaxCursorSize float64 `min:"1" max:"20"`
 
-	// Self explanatory
-	AddDanser  bool   `liveedit:"false"`
-	DanserName string `label:"Danser's name" tooltip:"It's also used in danser replay mode" liveedit:"false"`
+	// Self-explanatory
+	AddDanser     bool   `liveedit:"false"`
+	DanserName    string `label:"Danser's name" tooltip:"It's also used in danser replay mode" liveedit:"false"`
+	MissBeforeEnd int    `label:"Misses before end" min:"0"`
 }
 
 type KnockoutMode int

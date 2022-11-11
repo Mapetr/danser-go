@@ -4,6 +4,7 @@ import (
 	"github.com/wieku/danser-go/app/beatmap/objects"
 	"github.com/wieku/danser-go/app/dance/movers"
 	"github.com/wieku/danser-go/app/graphics"
+	"github.com/wieku/danser-go/app/settings"
 	"github.com/wieku/danser-go/framework/math/mutils"
 )
 
@@ -37,6 +38,9 @@ func NewNaturalInputProcessor(objs []objects.IHitObject, cursor *graphics.Cursor
 
 func (processor *NaturalInputProcessor) Update(time float64) {
 	if len(processor.queue) > 0 {
+		if len(processor.queue) == settings.Knockout.MissBeforeEnd && settings.KNOCKOUT {
+			return
+		}
 		for i := 0; i < len(processor.queue); i++ {
 			g := processor.queue[i]
 
